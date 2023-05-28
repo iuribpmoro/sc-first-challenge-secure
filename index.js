@@ -52,7 +52,7 @@ app.post('/comments', (req, res) => {
         return;
     } else {
         comments.push(comment);
-        res.redirect('/comments');
+        res.redirect('/user/' + req.session.user.id);
     }
 });
 
@@ -95,7 +95,7 @@ function htmlEncode(str) {
 app.get('/user/:id', (req, res) => {
     const id = req.params.id;
     const user = req.session.user;
-    console.log(users);
+    // console.log(users);
     if (user && user.id === id) {
         res.send(`
         <h1>User Profile</h1>
